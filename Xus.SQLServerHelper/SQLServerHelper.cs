@@ -15,7 +15,7 @@ namespace Xus.SQLServerHelper
 		/// Sql连接对象
 		/// </summary>
 		/// <value>Sql连接对象</value>
-        public SqlConnection SqlCnt { get; set; } //Sql连接对象
+		private SqlConnection SqlCnt { get; set; } //Sql连接对象
 
         /// <summary>
         /// 构造函数
@@ -302,8 +302,8 @@ namespace Xus.SQLServerHelper
         /// （在DataSet中的数据表）
         /// </summary>
         /// <param name="dataset">修改的数据表所在的DataSet</param>
+		/// <param name="TableName">被修改的数据表名</param>
         /// <param name="createTableSqlCommand">创建数据表的sql语句</param>
-        /// <param name="TableName">被修改的数据表名</param>
         public void UpdateTable(DataSet dataset, string TableName, string createTableSqlCommand)
         {
             if (dataset == null)
