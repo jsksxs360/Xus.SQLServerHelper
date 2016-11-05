@@ -2,6 +2,10 @@
 
 适用于 C# 的 SQL Server 连接辅助类，提供了对数据库的常用操作，包括执行 SQL 语句、按流的方式读取数据、填充本地 DataSet、批量提交对数据表的修改等。
 
+### 下载
+
+[Xus.SQLServerHelper](https://github.com/jsksxs360/Xus.SQLServerHelper/releases/)
+
 ## 构造函数
 
 SQLServerHelper 对象有三种构造方式：使用用户名密码验证的构造函数、使用 Windows 身份验证的构造函数、使用连接字符串的构造函数。
