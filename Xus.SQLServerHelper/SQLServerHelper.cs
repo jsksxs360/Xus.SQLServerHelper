@@ -108,7 +108,7 @@ namespace Xus.SQLServerHelper
 		/// <returns>执行SQL语句受影响的行数</returns>
 		public int ExecuteSqlCommand(string sqlCommand, bool closeConnection = true)
 		{
-			if (sqlCommand == null || sqlCommand == string.Empty)
+			if (string.IsNullOrEmpty(sqlCommand))
 				throw new Exception("要执行的SQL语句不能为空");
 			OpenConnection();
 			SqlCommand sqlCmd = new SqlCommand(sqlCommand, SqlCnt);
@@ -132,7 +132,7 @@ namespace Xus.SQLServerHelper
 		/// <returns>获取到的数据表</returns>
 		public DataTable GetTable(string selectSqlCommand)
 		{
-			if (selectSqlCommand == null || selectSqlCommand == string.Empty)
+			if (string.IsNullOrEmpty(selectSqlCommand))
 				throw new Exception("要执行的select语句不能为空");
 			OpenConnection();
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSqlCommand, SqlCnt);
@@ -160,7 +160,7 @@ namespace Xus.SQLServerHelper
 		/// <returns>获取到的数据表</returns>
 		public DataTable GetTable(string tableName, int rows)
 		{
-			if (tableName == null || tableName == string.Empty)
+			if (string.IsNullOrEmpty(tableName))
 				throw new Exception("要获取的数据表名称不能为空");
 			OpenConnection();
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select top " + rows + " * from " + tableName, SqlCnt);
@@ -185,7 +185,7 @@ namespace Xus.SQLServerHelper
 		/// <returns>SqlDataReader对象</returns>
 		public SqlDataReader GetDataStream(string selectSqlCommand)
 		{
-			if (selectSqlCommand == null || selectSqlCommand == string.Empty)
+			if (string.IsNullOrEmpty(selectSqlCommand))
 				throw new Exception("要执行的select语句不能为空");
 			OpenConnection();
 			SqlCommand sqlCmd = new SqlCommand(selectSqlCommand, SqlCnt);
@@ -211,9 +211,9 @@ namespace Xus.SQLServerHelper
 		{
 			if (dataSet == null)
 				throw new Exception("要填充数据的DataSet不能为null");
-			if (selectSqlCommands == null || selectSqlCommands == string.Empty)
+			if (string.IsNullOrEmpty(selectSqlCommands))
 				throw new Exception("获取数据的select语句不能为空");
-			if (insertTableName == null || insertTableName == string.Empty)
+			if (string.IsNullOrEmpty(insertTableName))
 				throw new Exception("插入的表名不能为空");
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSqlCommands, SqlCnt);
 			try
@@ -282,7 +282,7 @@ namespace Xus.SQLServerHelper
 		{
 			if (dataTable == null)
 				throw new Exception("修改的数据表不能为空");
-			if (createTableSqlCommand == null || createTableSqlCommand == string.Empty)
+			if (string.IsNullOrEmpty(createTableSqlCommand))
 				throw new Exception("创建数据表的sql语句不能为空");
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(createTableSqlCommand, SqlCnt);
 			//为SqlDataAdapter赋予SqlCommandBuilder功能
@@ -310,7 +310,7 @@ namespace Xus.SQLServerHelper
 				throw new Exception("修改过的DataSet不能为null");
 			if (TableName == null || TableName == string.Empty)
 				throw new Exception("数据表名不能为空");
-			if (createTableSqlCommand == null || createTableSqlCommand == string.Empty)
+			if (string.IsNullOrEmpty(createTableSqlCommand))
 				throw new Exception("创建数据表的select语句不能为空");
 			SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(createTableSqlCommand, SqlCnt);
 			//为SqlDataAdapter赋予SqlCommandBuilder功能
